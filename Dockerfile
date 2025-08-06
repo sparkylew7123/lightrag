@@ -50,8 +50,12 @@ RUN mkdir -p /app/data/rag_storage /app/data/inputs
 ENV WORKING_DIR=/app/data/rag_storage
 ENV INPUT_DIR=/app/data/inputs
 
-# Expose the default port
-EXPOSE 9621
+# Set the port for Fly.io
+ENV PORT=8000
+ENV HOST=0.0.0.0
+
+# Expose the port for Fly.io
+EXPOSE 8000
 
 # Set entrypoint
 ENTRYPOINT ["python", "-m", "lightrag.api.lightrag_server"]
